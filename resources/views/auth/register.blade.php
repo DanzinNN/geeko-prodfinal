@@ -1,52 +1,60 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+<x-auth.auth-layout>
+    @section('title', 'CADASTRO')
+
+    <form method="POST" action="{{ route('register') }}" class="space-y-4">
         @csrf
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
-        </div>
+        <input type="text"
+            id="name"
+            name="name"
+            :value="old('name')"
+            class="p-2 w-full rounded-md border-2 border-pink500 bg-transparent text-white focus:outline-none focus:ring-2 focus:ring-pink500 focus:border-pink500 transition duration-200 placeholder:font-poppins"
+            placeholder="Nome"
+            required
+            autofocus
+        />
+        <x-input-error :messages="$errors->get('name')" class="mt-2" />
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+        <input type="email"
+            id="email"
+            name="email"
+            :value="old('email')"
+            class="p-2 w-full rounded-md border-2 border-pink500 bg-transparent text-white focus:outline-none focus:ring-2 focus:ring-pink500 focus:border-pink500 transition duration-200 placeholder:font-poppins"
+            placeholder="Email"
+            required
+        />
+        <x-input-error :messages="$errors->get('email')" class="mt-2" />
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+        <input type="password"
+            id="password"
+            name="password"
+            class="p-2 w-full rounded-md border-2 border-pink500 bg-transparent text-white focus:outline-none focus:ring-2 focus:ring-pink500 focus:border-pink500 transition duration-200 placeholder:font-poppins"
+            placeholder="Senha"
+            required
+        />
+        <x-input-error :messages="$errors->get('password')" class="mt-2" />
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
+        <input type="password"
+            id="password_confirmation"
+            name="password_confirmation"
+            class="p-2 w-full rounded-md border-2 border-pink500 bg-transparent text-white focus:outline-none focus:ring-2 focus:ring-pink500 focus:border-pink500 transition duration-200 placeholder:font-poppins"
+            placeholder="Confirmar Senha"
+            required
+        />
+        <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
+       <button type="submit" class="bg-pink500 w-full rounded-md p-2 text-white font-poppins font-extrabold hover:bg-pink600 transition duration-200">
+            CADASTRAR
+        </button>
     </form>
-</x-guest-layout>
+
+    <div class="pt-4">
+        <div class="bg-gradient-to-r from-primaryGradient to-secondaryGradient h-0.5"></div>
+        <p class="font-poppins text-white pt-2">
+            Já tem uma conta?
+            <a href="{{ route('login') }}" class="hover:text-pink500">
+                Faça login
+            </a>
+        </p>
+    </div>
+</x-auth.auth-layout>
