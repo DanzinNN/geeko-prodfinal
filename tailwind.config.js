@@ -17,7 +17,7 @@ export default {
                 slate700: '#1E2836',
                 loginContainer: '#1C2D45',
                 pink500: '#FF23F0',
-
+                
                 primaryGradient: '#FF26C9',
                 secondaryGradient: '#00C8FF',
                 navDark: '#10031C',

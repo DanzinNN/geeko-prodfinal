@@ -21,4 +21,8 @@ Route::middleware('auth')->group(function () {
 });
 
 
+Route::get('/admin', function () {
+    return view('admin.teste');
+});
+
 require __DIR__.'/auth.php';
