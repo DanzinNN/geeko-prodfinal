@@ -24,5 +24,20 @@ Route::middleware('auth')->group(function () {
 Route::get('/admin', function () {
     return view('admin.teste');
 });
+Route::get('/adminCategoriasIndex', function () {
+    return view('admin.categorias.index');
+});
+Route::get('/adminCategoriasCreate', function () {
+    return view('admin.categorias.create');
+});
+Route::get('/adminProdutosIndex', function () {
+    return view('admin.produtos.index');
+});
+Route::get('/adminProdutosCreate', function () {
+    return view('admin.produtos.create');
+});
+Route::get('/adminProdutosEdit', function () {
+    return view('admin.produtos.edit');
+});
 
 require __DIR__.'/auth.php';
