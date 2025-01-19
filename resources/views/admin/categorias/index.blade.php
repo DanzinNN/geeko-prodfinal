@@ -19,10 +19,12 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-700">
+                        @foreach ($categorias as $categoria)
+                            
                         <tr class="text-gray-300 hover:bg-slate800/50 transition duration-200 font-poppins">
-                            <td class="px-6 py-4 whitespace-nowrap">1</td>
-                            <td class="px-6 py-4 whitespace-nowrap">Nome da Categoria</td>
-                            <td class="px-6 py-4 whitespace-nowrap">Descrição da categoria</td>
+                            <td class="px-6 py-4 whitespace-nowrap">{{$categoria->id}}</td>
+                            <td class="px-6 py-4 whitespace-nowrap">{{$categoria->nome_categoria}}</td>
+                            <td class="px-6 py-4 whitespace-nowrap">{{$categoria->descricao}}</td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="flex gap-3">
                                     <button class="flex items-center justify-center w-8 h-8 bg-gradient-to-r from-[#22c55e] to-[#16a34a] rounded-lg hover:opacity-90 transition duration-200">
@@ -43,6 +45,7 @@
                                 </div>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

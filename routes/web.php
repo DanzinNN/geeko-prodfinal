@@ -1,14 +1,16 @@
 <?php
 
+use App\Http\Controllers\CarrinhoController;
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\ProdutosController as UserProdutosController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/home', function () {
-    return view('client.home');
-});
+Route::get('/home', [UserProdutosController::class, 'index']);;
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -24,20 +26,41 @@ Route::middleware('auth')->group(function () {
 Route::get('/admin', function () {
     return view('admin.teste');
 });
-Route::get('/adminCategoriasIndex', function () {
-    return view('admin.categorias.index');
-});
-Route::get('/adminCategoriasCreate', function () {
-    return view('admin.categorias.create');
-});
-Route::get('/adminProdutosIndex', function () {
-    return view('admin.produtos.index');
-});
-Route::get('/adminProdutosCreate', function () {
-    return view('admin.produtos.create');
-});
-Route::get('/adminProdutosEdit', function () {
-    return view('admin.produtos.edit');
-});
 
 require __DIR__.'/auth.php';
+
+
+//ROTAS ADMIN CATEGORIA
+Route::get('categoria', [CategoriaController::class, 'index'])->name('admin.categorias.index');
+Route::get('categoria/create', [CategoriaController::class, 'create'])->name('admin.categorias.create');
+Route::post('categoria',[CategoriaController::class, 'store'])->name('admin.categorias.store');
+Route::get('categoria/{categoria}',[CategoriaController::class, 'show'])->name('admin.categorias.show');
+Route::get('categoria/{categoria}/edit',[CategoriaController::class, 'edit'])->name('admin.categorias.edit');
+Route::put('categoria/{categoria}',[CategoriaController::class, 'update'])->name('admin.categorias.update');
+Route::delete('categoria/{categoria}',[CategoriaController::class, 'destroy'])->name('admin.categorias.destroy');
+
+//ROTAS ADMIN PRODUTO
+Route::get('produto', [ProdutosController::class, 'index'])->name('admin.produtos.index');
+Route::get('produto/create',[ProdutosController::class, 'create'])->name('admin.produtos.create');
+Route::post('produto', [ProdutosController::class, 'store'])->name('admin.produtos.store');
+Route::get('produtdo/{produto}',[ProdutosController::class, 'show'])->name('admin.produtos.show');
+Route::get('produto/{produto}/edit',[ProdutosController::class, 'edit'])->name('admin.produtos.edit');
+Route::put('produto/{produto}',[ProdutosController::class, 'update'])->name('admin.produtos.update');
+Route::delete('produto/{produto}',[ProdutosController::class, 'destroy'])->name('admin.produtos.destroy');
+
+Route::resource('produtos', ProdutosController::class);
+Route::get('produtosUser', [UserProdutosController::class,  'index'])->name('user.produtos.index');
+Route::get('produtosUser/{produto}', [UserProdutosController::class,  'show'])->name('user.produtos.show');
+
+Route::get('/produtoId', function () {
+    return view('client.produto.index');
+});
+
+
+
+Route::prefix('carrinho')->group(function () {
+    Route::get('/', [CarrinhoController::class, 'index'])->name('carrinho.index');
+    Route::post('/adicionar/{produto_id}', [CarrinhoController::class, 'adicionar'])->name('carrinho.adicionar');
+    Route::delete('/remover/{id}', [CarrinhoController::class, 'destroy'])->name('carrinho.destroy');
+    Route::patch('/atualizar/{id}', [CarrinhoController::class, 'update'])->name('carrinho.update');
+});

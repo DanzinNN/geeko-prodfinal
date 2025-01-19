@@ -4,7 +4,7 @@
             <div class="card-body">
                 <h5 class="text-2xl font-bold text-white mb-4 font-poppins">Cadastrar Produto</h5>
                 <div>
-                    <form action="" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('admin.produtos.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-4">
                             <label for="image" class="block text-sm font-medium text-gray-300 mb-2 font-poppins">Imagem do Produto:</label>
@@ -40,7 +40,9 @@
                             <label for="id_categoria" class="block text-sm font-medium text-gray-300 mb-2 font-poppins">Categoria:</label>
                             <select name="id_categoria" id="id_categoria"
                                 class="p-2 w-full rounded-xl border-2 border-rosa bg-transparent text-white font-poppins placeholder:font-poppins focus:outline-none focus:ring-2 focus:ring-rosa focus:border-rosa transition duration-200" required>
-                                <option value="">Selecione uma categoria</option>
+                                @foreach ($categorias as $categoria )
+                                <option value="{{$categoria->id}}">{{$categoria->nome_categoria}}</option>
+                            @endforeach
                             </select>
                         </div>
 
