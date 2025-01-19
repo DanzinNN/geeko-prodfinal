@@ -8,8 +8,7 @@
 
         <div class="bg-slate-700 rounded-lg p-4">
             <p class="text-gray-200">
-                Este é um exemplo de conteúdo usando o novo layout administrativo.
-                Você pode personalizar esta página conforme suas necessidades.
+                Bem-vindo ao painel administrativo do Gekko
             </p>
         </div>
     </div>

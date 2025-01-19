@@ -4,13 +4,14 @@ use App\Http\Controllers\CarrinhoController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Roles\HomeController;
 use App\Http\Controllers\User\ProdutosController as UserProdutosController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/home', [UserProdutosController::class, 'index']);;
+Route::get('/home', [UserProdutosController::class, 'index'])->name('client.home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -23,9 +24,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::get('/admin', function () {
-    return view('admin.teste');
-});
+
 
 require __DIR__.'/auth.php';
 
@@ -52,9 +51,6 @@ Route::resource('produtos', ProdutosController::class);
 Route::get('produtosUser', [UserProdutosController::class,  'index'])->name('user.produtos.index');
 Route::get('produtosUser/{produto}', [UserProdutosController::class,  'show'])->name('user.produtos.show');
 
-Route::get('/produtoId', function () {
-    return view('client.produto.index');
-});
 
 
 
@@ -64,3 +60,5 @@ Route::prefix('carrinho')->group(function () {
     Route::delete('/remover/{id}', [CarrinhoController::class, 'destroy'])->name('carrinho.destroy');
     Route::patch('/atualizar/{id}', [CarrinhoController::class, 'update'])->name('carrinho.update');
 });
+
+Route::get('/admin', [HomeController::class, 'index'])->middleware(['auth', 'admin'])->name('admin.home');

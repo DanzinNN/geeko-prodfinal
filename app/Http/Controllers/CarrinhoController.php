@@ -14,7 +14,7 @@ class CarrinhoController extends Controller
     {
         if (!Auth::check()) {
             return redirect()->route('login');
-        }
+        } 
 
         $itensCarrinho = CarrinhoItem::where('user_id', Auth::id())
             ->with('produto')
