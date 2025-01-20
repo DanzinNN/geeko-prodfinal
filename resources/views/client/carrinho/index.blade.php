@@ -80,12 +80,16 @@
                             </div>
                         </div>
 
-                        <form action="" method="POST">
+                        <form action="{{ route('checkout.processar') }}" method="POST">
                             @csrf
                             <button type="submit" class="w-full bg-pink-600 text-white py-3 rounded-lg hover:bg-pink-700 transition font-bold">
                                 Finalizar Compra
                             </button>
                         </form>
+
+
+
+
                         <a href="{{ route('client.home') }}"
                             class="block text-center text-gray-400 hover:text-white transition">
                             Continuar Comprando
@@ -104,5 +108,4 @@
             </div>
         @endif
     </div>
-
 </x-client.client-layout>

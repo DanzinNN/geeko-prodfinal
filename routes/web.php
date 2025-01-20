@@ -1,11 +1,11 @@
 <?php
 
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CarrinhoController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Roles\HomeController;
-use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\User\ProdutosController as UserProdutosController;
 use Illuminate\Support\Facades\Route;
 //ROTAS PADRÕES BREEZE
@@ -63,8 +63,7 @@ Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('c
 Route::get('/checkout/cancel', [CheckoutController::class, 'cancel'])->name('checkout.cancel');
 Route::get('/checkout/{produto}', [CheckoutController::class, 'checkout'])->name('checkout');
 
-
-Route::post('/checkout/processar', [CheckoutController::class, 'processarCheckout'])->name('checkout.processar');
+Route::post('/checkout', [CheckoutController::class, 'processarCheckout'])->name('checkout.processar');
 
 //FIM DAS ROTAS CLIENT
 
