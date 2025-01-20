@@ -29,7 +29,8 @@
                             <form action="{{ route('carrinho.destroy', $item->id) }}" method="POST" class="inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="text-pink-500 hover:text-pink-400 transition">
+                                <button type="submit" class="text-pink-500 hover:text-pink-400 transition" onclick=" return confirm('Tem certeza que deseja remover este item do carrinho?')"
+                                arial-label = "Excluir Produto">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </form>
@@ -68,7 +69,7 @@
                         Finalizar Compra
                     </button>
 
-                    <a href="{{ route('produtos.index') }}" class="block text-center text-gray-400 hover:text-white transition">
+                    <a href="{{ route('client.home') }}" class="block text-center text-gray-400 hover:text-white transition">
                         Continuar Comprando
                     </a>
                 </div>
@@ -78,7 +79,7 @@
         <div class="text-center py-12">
             <h2 class="text-2xl font-bold mb-4 text-white">Seu carrinho está vazio</h2>
             <p class="text-gray-400 mb-8">Adicione alguns produtos para começar suas compras!</p>
-            <a href="{{ route('produtos.index') }}"
+            <a href="{{ route('client.home') }}"
                class="inline-block bg-pink-600 text-white px-6 py-3 rounded-lg hover:bg-pink-700 transition">
                 Continuar Comprando
             </a>

@@ -7,11 +7,11 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Roles\HomeController;
 use App\Http\Controllers\User\ProdutosController as UserProdutosController;
 use Illuminate\Support\Facades\Route;
-
+//ROTAS PADRÕES BREEZE
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/home', [UserProdutosController::class, 'index'])->name('client.home');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -27,9 +27,7 @@ Route::middleware('auth')->group(function () {
 
 
 require __DIR__.'/auth.php';
-
-
-//ROTAS ADMIN CATEGORIA
+//ROTAS ADMIN
 Route::get('categoria', [CategoriaController::class, 'index'])->name('admin.categorias.index');
 Route::get('categoria/create', [CategoriaController::class, 'create'])->name('admin.categorias.create');
 Route::post('categoria',[CategoriaController::class, 'store'])->name('admin.categorias.store');
@@ -38,7 +36,6 @@ Route::get('categoria/{categoria}/edit',[CategoriaController::class, 'edit'])->n
 Route::put('categoria/{categoria}',[CategoriaController::class, 'update'])->name('admin.categorias.update');
 Route::delete('categoria/{categoria}',[CategoriaController::class, 'destroy'])->name('admin.categorias.destroy');
 
-//ROTAS ADMIN PRODUTO
 Route::get('produto', [ProdutosController::class, 'index'])->name('admin.produtos.index');
 Route::get('produto/create',[ProdutosController::class, 'create'])->name('admin.produtos.create');
 Route::post('produto', [ProdutosController::class, 'store'])->name('admin.produtos.store');
@@ -46,13 +43,13 @@ Route::get('produtdo/{produto}',[ProdutosController::class, 'show'])->name('admi
 Route::get('produto/{produto}/edit',[ProdutosController::class, 'edit'])->name('admin.produtos.edit');
 Route::put('produto/{produto}',[ProdutosController::class, 'update'])->name('admin.produtos.update');
 Route::delete('produto/{produto}',[ProdutosController::class, 'destroy'])->name('admin.produtos.destroy');
-
+Route::get('/admin', [HomeController::class, 'index'])->middleware(['auth', 'admin'])->name('admin.home');
+//FIM DAS ROTAS ADMIN
+//ROTAS CLIENT
+Route::get('/home', [UserProdutosController::class, 'index'])->name('client.home');
 Route::resource('produtos', ProdutosController::class);
 Route::get('produtosUser', [UserProdutosController::class,  'index'])->name('user.produtos.index');
 Route::get('produtosUser/{produto}', [UserProdutosController::class,  'show'])->name('user.produtos.show');
-
-
-
 
 Route::prefix('carrinho')->group(function () {
     Route::get('/', [CarrinhoController::class, 'index'])->name('carrinho.index');
@@ -60,5 +57,5 @@ Route::prefix('carrinho')->group(function () {
     Route::delete('/remover/{id}', [CarrinhoController::class, 'destroy'])->name('carrinho.destroy');
     Route::patch('/atualizar/{id}', [CarrinhoController::class, 'update'])->name('carrinho.update');
 });
+//FIM DAS ROTAS CLIENT
 
-Route::get('/admin', [HomeController::class, 'index'])->middleware(['auth', 'admin'])->name('admin.home');
