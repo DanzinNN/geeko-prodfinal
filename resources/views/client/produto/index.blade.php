@@ -22,16 +22,20 @@
 
             {{-- Seção dos botões de ação --}}
             <div class="flex flex-col gap-4 p-4 justify-center">
-                <button class="btn btn-primary bg-primaryGradient text-lg py-3 rounded-full hover:scale-105 transition-transform text-white">
+                <a href="{{ route('checkout', $produto->getKey()) }}"
+                   class="btn btn-primary bg-primaryGradient text-lg py-3 rounded-full hover:scale-105 transition-transform text-white">
                     Comprar agora
-                </button>
+                </a>
                 <form action="{{ route('carrinho.adicionar', $produto->getKey()) }}" method="POST">
                     @csrf
-                    <button type="submit" class="w-full btn btn-info bg-secondaryGradient text-lg py-3 rounded-full hover:scale-105 transition-transform text-white">
+                    <button type="submit"
+                            class="w-full btn btn-info bg-secondaryGradient text-lg py-3 rounded-full hover:scale-105 transition-transform text-white">
                         Adicionar ao carrinho
                     </button>
                 </form>
             </div>
+
         </main>
     </div>
+    
 </x-client.client-layout>
