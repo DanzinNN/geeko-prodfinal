@@ -37,6 +37,8 @@ Route::get('categoria/{categoria}/edit',[CategoriaController::class, 'edit'])->n
 Route::put('categoria/{categoria}',[CategoriaController::class, 'update'])->name('admin.categorias.update');
 Route::delete('categoria/{categoria}',[CategoriaController::class, 'destroy'])->name('admin.categorias.destroy');
 
+
+
 Route::get('produto', [ProdutosController::class, 'index'])->name('admin.produtos.index');
 Route::get('produto/create',[ProdutosController::class, 'create'])->name('admin.produtos.create');
 Route::post('produto', [ProdutosController::class, 'store'])->name('admin.produtos.store');
@@ -45,12 +47,17 @@ Route::get('produto/{produto}/edit',[ProdutosController::class, 'edit'])->name('
 Route::put('produto/{produto}',[ProdutosController::class, 'update'])->name('admin.produtos.update');
 Route::delete('produto/{produto}',[ProdutosController::class, 'destroy'])->name('admin.produtos.destroy');
 Route::get('/admin', [HomeController::class, 'index'])->middleware(['auth', 'admin'])->name('admin.home');
+
+
+
 //FIM DAS ROTAS ADMIN
 //ROTAS CLIENT
-Route::get('/home', [UserProdutosController::class, 'index'])->name('client.home');
+Route::get('/home', [UserProdutosController::class, 'index'])->middleware(['auth'])->name('client.home');
 Route::resource('produtos', ProdutosController::class);
 Route::get('produtosUser', [UserProdutosController::class,  'index'])->name('user.produtos.index');
 Route::get('produtosUser/{produto}', [UserProdutosController::class,  'show'])->name('user.produtos.show');
+
+
 
 Route::prefix('carrinho')->group(function () {
     Route::get('/', [CarrinhoController::class, 'index'])->name('carrinho.index');
