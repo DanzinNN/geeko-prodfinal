@@ -57,6 +57,9 @@ Route::prefix('carrinho')->group(function () {
     Route::post('/adicionar/{produto_id}', [CarrinhoController::class, 'adicionar'])->name('carrinho.adicionar');
     Route::delete('/remover/{id}', [CarrinhoController::class, 'destroy'])->name('carrinho.destroy');
     Route::patch('/atualizar/{id}', [CarrinhoController::class, 'update'])->name('carrinho.update');
+    Route::post('/aumentar/{id}', [CarrinhoController::class, 'aumentarQuantidade'])->name('carrinho.aumentar');
+    Route::post('/diminuir/{id}', [CarrinhoController::class, 'diminuirQuantidade'])->name('carrinho.diminuir');
+
 });
 
 Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');

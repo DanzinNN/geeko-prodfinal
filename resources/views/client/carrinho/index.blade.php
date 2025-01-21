@@ -21,11 +21,17 @@
 
                             <div class="flex items-center space-x-4 mt-4 md:mt-0">
                                 <div class="flex items-center space-x-2">
+                                    <form action="{{route('carrinho.diminuir', $item->id)}}" method="POST">
+                                        @csrf
                                     <button
-                                        class="bg-gray-700 text-white px-3 py-1 rounded-lg hover:bg-gray-600 transition">-</button>
+                                        class="bg-gray-700 text-white px-3 py-1 rounded-lg hover:bg-gray-600 transition" type="submit">-</button>
+                                    </form>
                                     <span class="text-xl px-2">{{ $item->quantidade }}</span>
+                                    <form action="{{route('carrinho.aumentar', $item->id)}}" method="POST">
+                                        @csrf
                                     <button
-                                        class="bg-gray-700 text-white px-3 py-1 rounded-lg hover:bg-gray-600 transition">+</button>
+                                        class="bg-gray-700 text-white px-3 py-1 rounded-lg hover:bg-gray-600 transition" type="submit">+</button>
+                                    </form>
                                 </div>
 
                                 <form action="{{ route('carrinho.destroy', $item->id) }}" method="POST" class="inline">

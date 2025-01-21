@@ -38,6 +38,39 @@ class CarrinhoController extends Controller
         return redirect()->route('carrinho.index')
             ->with('success', 'Produto adicionado ao carrinho!');
     }
+    public function aumentarQuantidade($id)
+    {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
+        $item = CarrinhoItem::where('id', $id)
+            ->where('user_id', Auth::id())
+            ->firstOrFail();
+
+            $item->quantidade += 1;
+            $item->save();
+
+            return redirect()->route('carrinho.index')
+                ->with('success', 'Quantidade aumentada!');
+    }
+    public function diminuirQuantidade($id)
+    {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
+        $item = CarrinhoItem::where('id', $id)
+            ->where('user_id', Auth::id())
+            ->firstOrFail();
+
+            if ($item->quantidade > 1) {
+                $item->quantidade -= 1;
+                $item->save();
+            } else {
+                $item->delete();
+            }
+            return redirect()->route('carrinho.index')
+                ->with('success', 'Quantidade diminuida!');
+    }
 
     public function destroy($id)
     {
