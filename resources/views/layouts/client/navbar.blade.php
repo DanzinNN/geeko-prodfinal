@@ -1,6 +1,8 @@
 <nav class="flex items-center justify-between px-8 bg-background3 h-[100px]">
     <div class="flex items-center gap-4">
+        <a href="{{route('client.home')}}">
         <img src="{{ asset('images/logo-geeko.png') }}" alt="Logo" class="h-[75px] w-[75px]">
+    </a>
         <h1 class="text-white text-lg font-poppins">Bem vindo a Toca do Dragão</h1>
     </div>
     <input type="text"
