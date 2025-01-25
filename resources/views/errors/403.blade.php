@@ -24,6 +24,7 @@
 </head>
 <body class="min-h-screen bg-gradient-to-b from-slate900 via-slate800 to-slate700 bg-fixed flex items-center justify-center">
     <div class="max-w-2xl p-8 bg-slate900 rounded-2xl shadow-lg text-center">
+        <img src="{{ asset('video/banido.gif') }}" alt="Banido" class="mx-auto mb-6 rounded-lg w-96">
         <h1 class="text-4xl font-bold text-rosa mb-4 font-poppins">403 - Acesso Negado</h1>
         <p class="text-white text-lg mb-4 font-poppins">Você não tem permissão para acessar esta página.</p>
         <p class="text-white text-lg mb-6 font-poppins">
