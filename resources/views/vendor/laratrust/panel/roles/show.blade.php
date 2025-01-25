@@ -1,39 +1,45 @@
 @extends('laratrust::panel.layout')
 
-@section('title', "Role details")
+@section('title', "Detalhes da Função")
 
 @section('content')
-  <div class="flex flex-col">
-    <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-32">
-      <div
-        class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200 p-8"
-      >
-        <label class="flex justify-between w-4/12">
-          <span class="text-gray-900 font-bold">Name/Code:</span>
-          <span class="ml-4 text-gray-800">{{$role->name}}</span>
-        </label>
+  <div class="w-full px-4 lg:px-8 py-4">
+    <div class="bg-slate700 rounded-lg shadow-lg">
+      <div class="p-4 flex flex-col border-b border-gray-700">
+        <h2 class="text-xl font-poppins text-white mb-4">Detalhes da Função</h2>
 
-        <label class="flex justify-between w-4/12 my-4">
-          <span class="text-gray-900 font-bold">Display Name:</span>
-          <span class="ml-4 text-gray-800">{{$role->display_name}}</span>
-        </label>
+        <div class="space-y-4">
+          <div class="flex flex-col">
+            <span class="text-sm font-medium text-gray-300 font-poppins">Nome/Código:</span>
+            <span class="text-white font-poppins">{{$role->name}}</span>
+          </div>
 
-        <label class="flex justify-between w-4/12 my-4">
-          <span class="text-gray-900 font-bold">Description:</span>
-          <span class="ml-4 text-gray-800">{{$role->description}}</span>
-        </label>
-        <span class="text-gray-900 font-bold">Permissions:</span>
-        <ul class="grid grid-cols-1 md:grid-cols-4 list-inside">
-          @foreach ($role->permissions as $permission)
-            <li class="text-gray-800 list-disc" >{{$permission->display_name ?? $permission->name}}</li>
-          @endforeach
-        </ul>
-        <div class="flex justify-end">
-          <a
-            href="{{route("laratrust.roles.index")}}"
-            class="text-blue-600 hover:text-blue-900"
-          >
-            Back
+          <div class="flex flex-col">
+            <span class="text-sm font-medium text-gray-300 font-poppins">Nome de Exibição:</span>
+            <span class="text-white font-poppins">{{$role->display_name}}</span>
+          </div>
+
+          <div class="flex flex-col">
+            <span class="text-sm font-medium text-gray-300 font-poppins">Descrição:</span>
+            <span class="text-white font-poppins">{{$role->description}}</span>
+          </div>
+
+          <div class="flex flex-col">
+            <span class="text-sm font-medium text-gray-300 font-poppins mb-2">Permissões:</span>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+              @foreach ($role->permissions as $permission)
+                <span class="text-white font-poppins bg-slate800 px-3 py-2 rounded-lg">
+                  {{$permission->display_name ?? $permission->name}}
+                </span>
+              @endforeach
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-end mt-6">
+          <a href="{{route('laratrust.roles.index')}}"
+            class="bg-gradient-to-r from-primaryGradient to-secondaryGradient text-white px-4 py-2 rounded-lg hover:opacity-90 transition duration-200 font-poppins">
+            Voltar
           </a>
         </div>
       </div>
