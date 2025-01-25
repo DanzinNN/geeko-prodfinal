@@ -42,9 +42,9 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($user));
-
+        $user->addRole('user');
         Auth::login($user);
 
-        return redirect(route('client.home', absolute: false));
+        return redirect(route('client.home'));
     }
 }

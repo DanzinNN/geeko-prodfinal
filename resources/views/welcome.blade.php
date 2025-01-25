@@ -45,12 +45,21 @@
                         @if (Route::has('login'))
                             <nav class="-mx-3 flex flex-1 justify-end">
                                 @auth
+                                   @if (Auth::user()->hasRole('admin'))
                                     <a
-                                        href="{{ url('/dashboard') }}"
+                                        href="{{ url('/admin') }}"
                                         class="rounded-md px-3 py-2 text-white ring-1 ring-transparent transition hover:text-rosa focus:outline-none focus-visible:ring-rosa font-poppins"
                                     >
-                                        Dashboard
+                                        Dashboard de Admin
                                     </a>
+                                   @else
+                                    <a
+                                        href="{{ url('/home') }}"
+                                        class="rounded-md px-3 py-2 text-white ring-1 ring-transparent transition hover:text-rosa focus:outline-none focus-visible:ring-rosa font-poppins"
+                                    >
+                                        Retorne a loja
+                                    </a>
+                                   @endif
                                 @else
                                     <a
                                         href="{{ route('login') }}"
