@@ -14,20 +14,26 @@ return [
     'roles_structure' => [
         'admin' => [
             'users' => 'c,r,u,d',
-            'payments' => 'c,r,u,d',
-            'profile' => 'r,u',
+            'produtos' => 'c,r,u,d',
+            'categorias' => 'c,r,u,d',
+            'pedidos' => 'c,r,u,d',
+            'estoques' => 'c,r,u,d',
+            'envios' => 'c,r,u,d',
+            'profile' => 'r,u'
         ],
         'user' => [
-            'users' => 'c,r,u,d',
-            'profile' => 'r,u',
-        ],
-
+            'produtos' => 'r',
+            'categorias' => 'r',
+            'pedidos' => 'c,r',
+            'carrinho' => 'c,r,u,d',
+            'profile' => 'r,u'
+        ]
     ],
 
     'permissions_map' => [
         'c' => 'create',
         'r' => 'read',
         'u' => 'update',
-        'd' => 'delete',
-    ],
+        'd' => 'delete'
+    ]
 ];
