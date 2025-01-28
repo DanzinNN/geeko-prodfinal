@@ -14,25 +14,36 @@
         @method('put')
 
         <div>
-            <x-input-label for="update_password_current_password" :value="__('Current Password')" />
-            <x-text-input id="update_password_current_password" name="current_password" type="password" class="mt-1 block w-full" autocomplete="current-password" />
-            <x-input-error :messages="$errors->updatePassword->get('current_password')" class="mt-2" />
+            <label for="current_password" class="block text-sm font-medium text-gray-300 mb-2 font-poppins">{{ __('Current Password') }}</label>
+            <input type="password" id="current_password" name="current_password"
+                class="p-2 w-full rounded-xl border-2 border-rosa bg-transparent text-white font-poppins placeholder:font-poppins focus:outline-none focus:ring-2 focus:ring-rosa focus:border-rosa transition duration-200"
+                autocomplete="current-password">
+            @error('current_password')
+                <span class="text-red-500 text-sm">{{ $message }}</span>
+            @enderror
         </div>
 
         <div>
-            <x-input-label for="update_password_password" :value="__('New Password')" />
-            <x-text-input id="update_password_password" name="password" type="password" class="mt-1 block w-full" autocomplete="new-password" />
+            <label for="update_password_password" class="block text-sm font-medium text-gray-300 mb-2 font-poppins">{{ __('New Password') }}</label>
+            <input type="password" id="update_password_password" name="password"
+                class="p-2 w-full rounded-xl border-2 border-rosa bg-transparent text-white font-poppins placeholder:font-poppins focus:outline-none focus:ring-2 focus:ring-rosa focus:border-rosa transition duration-200"
+                autocomplete="new-password">
             <x-input-error :messages="$errors->updatePassword->get('password')" class="mt-2" />
         </div>
 
         <div>
-            <x-input-label for="update_password_password_confirmation" :value="__('Confirm Password')" />
-            <x-text-input id="update_password_password_confirmation" name="password_confirmation" type="password" class="mt-1 block w-full" autocomplete="new-password" />
+            <label for="update_password_password_confirmation" class="block text-sm font-medium text-gray-300 mb-2 font-poppins">{{ __('Confirm Password') }}</label>
+            <input type="password" id="update_password_password_confirmation" name="password_confirmation"
+                class="p-2 w-full rounded-xl border-2 border-rosa bg-transparent text-white font-poppins placeholder:font-poppins focus:outline-none focus:ring-2 focus:ring-rosa focus:border-rosa transition duration-200"
+                autocomplete="new-password">
             <x-input-error :messages="$errors->updatePassword->get('password_confirmation')" class="mt-2" />
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+            <button type="submit"
+                class="px-4 py-2 bg-rosa text-white rounded-xl font-poppins hover:bg-rosa/80 transition duration-200 focus:outline-none focus:ring-2 focus:ring-rosa focus:ring-offset-2">
+                {{ __('Save') }}
+            </button>
 
             @if (session('status') === 'password-updated')
                 <p

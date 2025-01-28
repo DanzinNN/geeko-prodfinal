@@ -30,7 +30,7 @@
 
             <!-- Dropdown Menu -->
             <div x-show="isOpen" @click.away="isOpen = false" class="absolute right-0 mt-2 w-48 bg-slate-800 rounded-xl shadow-lg py-1 border border-rosa">
-                <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-rosa/20 transition">Perfil</a>
+                <a href="{{ url('profile') }}" class="block px-4 py-2 text-sm text-white hover:bg-rosa/20 transition">Perfil</a>
                 <a href="{{ route('carrinho.index') }}" class="block px-4 py-2 text-sm text-white hover:bg-rosa/20 transition">
                     <i class="fas fa-shopping-cart mr-2"></i>Carrinho
                 </a>

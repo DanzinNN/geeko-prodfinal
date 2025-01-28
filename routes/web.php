@@ -17,17 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-
-
 
 require __DIR__.'/auth.php';
 //ROTAS ADMIN
@@ -75,8 +69,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::delete('produto/{produto}',[ProdutosController::class, 'destroy'])->name('admin.produtos.destroy');
 });
 
-
-
 //FIM DAS ROTAS ADMIN
 //ROTAS CLIENT
 Route::middleware(['auth', 'role:user'])->group(function () {
@@ -99,6 +91,3 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/checkout/{produto}', [CheckoutController::class, 'checkout'])->name('checkout');
     Route::post('/checkout', [CheckoutController::class, 'processarCheckout'])->name('checkout.processar');
 });
-
-
-

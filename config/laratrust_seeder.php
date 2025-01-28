@@ -14,19 +14,12 @@ return [
     'roles_structure' => [
         'admin' => [
             'users' => 'c,r,u,d',
-            'produtos' => 'c,r,u,d',
-            'categorias' => 'c,r,u,d',
-            'pedidos' => 'c,r,u,d',
-            'estoques' => 'c,r,u,d',
-            'envios' => 'c,r,u,d',
-            'profile' => 'r,u'
+            'payments' => 'c,r,u,d',
+            'profile' => 'r,u',
         ],
         'user' => [
-            'produtos' => 'r',
-            'categorias' => 'r',
-            'pedidos' => 'c,r',
-            'carrinho' => 'c,r,u,d',
-            'profile' => 'r,u'
+            'users' => 'c,r,u,d',
+            'profile' => 'r,u',
         ]
     ],
 

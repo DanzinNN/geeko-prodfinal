@@ -28,16 +28,14 @@
             </p>
 
             <div class="mt-6">
-                <x-input-label for="password" value="{{ __('Password') }}" class="sr-only" />
-
-                <x-text-input
+                <label for="password" class="block text-sm font-medium text-gray-300 mb-2 font-poppins">{{ __('Password') }}</label>
+                <input
                     id="password"
                     name="password"
                     type="password"
-                    class="mt-1 block w-3/4"
+                    class="p-2 w-full rounded-xl border-2 border-rosa bg-transparent text-white font-poppins placeholder:font-poppins focus:outline-none focus:ring-2 focus:ring-rosa focus:border-rosa transition duration-200"
                     placeholder="{{ __('Password') }}"
                 />
-
                 <x-input-error :messages="$errors->userDeletion->get('password')" class="mt-2" />
             </div>
 

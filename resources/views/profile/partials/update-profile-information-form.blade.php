@@ -17,20 +17,24 @@
         @csrf
         @method('patch')
 
-        <div class="mb-4">
-            <x-input-label for="name" :value="__('Nome')" class="block text-sm font-medium text-gray-300 mb-2 font-poppins" />
-            <x-text-input id="name" name="name" type="text"
+        <div>
+            <label for="name" class="block text-sm font-medium text-gray-300 mb-2 font-poppins">{{ __('Name') }}</label>
+            <input type="text" id="name" name="name"
                 class="p-2 w-full rounded-xl border-2 border-rosa bg-transparent text-white font-poppins placeholder:font-poppins focus:outline-none focus:ring-2 focus:ring-rosa focus:border-rosa transition duration-200"
-                :value="old('name', $user->name)" required autofocus autocomplete="name" />
-            <x-input-error class="mt-2" :messages="$errors->get('name')" />
+                value="{{ old('name', $user->name) }}" required autofocus autocomplete="name">
+            @error('name')
+                <span class="text-red-500 text-sm">{{ $message }}</span>
+            @enderror
         </div>
 
         <div class="mb-4">
-            <x-input-label for="email" :value="__('E-mail')" class="block text-sm font-medium text-gray-300 mb-2 font-poppins" />
-            <x-text-input id="email" name="email" type="email"
+            <label for="email" class="block text-sm font-medium text-gray-300 mb-2 font-poppins">{{ __('E-mail') }}</label>
+            <input type="email" id="email" name="email"
                 class="p-2 w-full rounded-xl border-2 border-rosa bg-transparent text-white font-poppins placeholder:font-poppins focus:outline-none focus:ring-2 focus:ring-rosa focus:border-rosa transition duration-200"
-                :value="old('email', $user->email)" required autocomplete="username" />
-            <x-input-error class="mt-2" :messages="$errors->get('email')" />
+                value="{{ old('email', $user->email) }}" required autocomplete="username">
+            @error('email')
+                <span class="text-red-500 text-sm">{{ $message }}</span>
+            @enderror
 
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
                 <div>
