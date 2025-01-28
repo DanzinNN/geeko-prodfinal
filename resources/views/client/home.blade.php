@@ -3,8 +3,8 @@
     <div class="mx-auto w-[90%] max-w-[1700px]">
         <!-- Banner Flutuante -->
         <div
-            class="relative w-full h-[250px] bg-gradient-to-r from-rosa via-purple-500 to-blue-500 flex items-center justify-center rounded-lg shadow-lg mt-8">
-            <h2 class="text-white text-3xl font-lakki">Bem vindo à nossa loja!</h2>
+            class="relative w-full h-[250px] flex items-center justify-center rounded-lg shadow-lg mt-14">
+            <img src="{{asset('images/banner-gekko.png')}}" alt="" class="rounded-lg w-full">
         </div>
 
         <!-- Grid de Cards -->

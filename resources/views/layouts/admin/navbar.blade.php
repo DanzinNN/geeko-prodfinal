@@ -17,7 +17,7 @@
     <div class="relative" x-data="{ isOpen: false }">
         <button @click="isOpen = !isOpen" class="flex items-center gap-2 text-rosa hover:text-rosa/80 transition">
             <img src="https://ui-avatars.com/api/?name={{ Auth::user()->name }}" alt="Avatar" class="w-8 h-8 rounded-xl">
-            <span class="font-poppins">{{ Auth::user()->name }}</span>
+            <span class="font-poppins text-white">{{ Auth::user()->name }}</span>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
@@ -25,8 +25,7 @@
 
         <!-- Dropdown Menu -->
         <div x-show="isOpen" @click.away="isOpen = false" class="absolute right-0 mt-2 w-48 bg-slate-800 rounded-xl shadow-lg py-1 border border-rosa">
-            <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-rosa/20 transition">Perfil</a>
-            <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-rosa/20 transition">Configurações</a>
+            <a href="{{url('profile')}}" class="block px-4 py-2 text-sm text-white hover:bg-rosa/20 transition">Perfil</a>
             <div class="border-t border-rosa/30"></div>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf

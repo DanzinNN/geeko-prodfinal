@@ -18,22 +18,22 @@
         <div class="flex items-center">
           <div class="hidden md:block">
             <div class="flex items-baseline">
-              <a href="{{route('admin.home')}}" class="text-rosa hover:text-white px-3 py-2 rounded-md text-sm font-medium">← Voltar</a>
+              <a href="{{route('admin.home')}}" class="text-white hover:text-rosa px-3 py-2 rounded-md text-sm font-medium">← Voltar</a>
               <a
                 href="{{ route('laratrust.roles-assignment.index') }}"
-                class="ml-4 {{ request()->is('*roles-assignment*') ? 'bg-slate-800 text-rosa' : 'text-rosa hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium"
+                class="ml-4 {{ request()->is('*roles-assignment*') ? 'bg-slate-800 text-white' : 'text-white hover:text-rosa' }} px-3 py-2 rounded-md text-sm font-medium"
               >
                 Atribuição de Funções & Permissões
               </a>
               <a
                 href="{{route('laratrust.roles.index')}}"
-                class="ml-4 {{ request()->is('*roles') ? 'bg-slate-800 text-rosa' : 'text-rosa hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium"
+                class="ml-4 {{ request()->is('*roles') ? 'bg-slate-800 text-white' : 'text-white hover:text-rosa' }} px-3 py-2 rounded-md text-sm font-medium"
               >
                 Funções
               </a>
               <a
                 href="{{ route('laratrust.permissions.index') }}"
-                class="ml-4 {{ request()->is('*permissions*') ? 'bg-slate-800 text-rosa' : 'text-rosa hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium"
+                class="ml-4 {{ request()->is('*permissions*') ? 'bg-slate-800 text-white' : 'text-white hover:text-rosa' }} px-3 py-2 rounded-md text-sm font-medium"
               >
                 Permissões
               </a>
@@ -77,7 +77,7 @@
 
   <header class="bg-slate-900 shadow">
     <div class="max-w-6xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-      <h1 class="text-3xl font-bold leading-tight text-rosa">
+      <h1 class="text-3xl font-bold leading-tight text-white">
         @yield('title')
       </h1>
     </div>

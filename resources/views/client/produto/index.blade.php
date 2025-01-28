@@ -23,7 +23,7 @@
             {{-- Seção dos botões de ação --}}
             <div class="flex flex-col gap-4 p-4 justify-center">
                 <a href="{{ route('checkout', $produto->getKey()) }}"
-                   class="btn btn-primary bg-primaryGradient text-lg py-3 rounded-full hover:scale-105 transition-transform text-white">
+                   class="btn btn-primary bg-primaryGradient text-lg py-3 rounded-full hover:scale-105 transition-transform text-white text-center">
                     Comprar agora
                 </a>
                 <form action="{{ route('carrinho.adicionar', $produto->getKey()) }}" method="POST">
@@ -37,5 +37,5 @@
 
         </main>
     </div>
-    
+
 </x-client.client-layout>

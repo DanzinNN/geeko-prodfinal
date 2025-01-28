@@ -8,7 +8,7 @@
 
         <div class="bg-slate-700 rounded-lg p-4">
             <p class="text-gray-200">
-                Bem-vindo ao painel administrativo do Gekko
+                Bem-vindo ao painel administrativo do Geeko
             </p>
         </div>
     </div>
